@@ -1,0 +1,28 @@
+ALGORITHM SUM_DISTINCT_ELEMENT_HASH_TABLE
+htab : HASH_TABLE (Integer,Integer);
+tab : ARRAY_OF_INTEGER (9);
+count,i : integer;
+sum: integer :=0;
+
+BEGIN
+
+// let 2 tables tab1= [3,1,7,9] and tab2=[2,4,1,9,3]
+
+tab = {3,1,7,9,2,4,1,9,3};
+FOR i FROM 0 TO tab.length -1 STEP 1 DO 
+    IF (htab.lookup(tab[i]) = true) THEN 
+        count := htab.get(tab[i]);
+        htab.insert(tab[i],count +1);
+    ELSE 
+    htab.insert(tab[i],1);
+    END_IF
+END_FOR
+FOR i FROM 0 TO tab.length -1 STEP 1 DO
+    IF (htab.get(tab[i]) = 1) THEN
+        sum = sum + tab[i];
+    END_IF
+END_FOR
+
+Write (" THE SUM OF ALL DISTINCT ELEMENTS IS ", sum);
+
+END
