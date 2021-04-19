@@ -8,7 +8,14 @@ BEGIN
 
 // let 2 tables tab1= [3,1,7,9] and tab2=[2,4,1,9,3]
 
-tab = {3,1,7,9,2,4,1,9,3};
+tab=[2,4,1,9,3];
+
+htab.insert(3,1);
+htab.insert(1,1);
+htab.insert(7,1);
+htab.insert(9,1);
+Write(htab);
+
 FOR i FROM 0 TO tab.length -1 STEP 1 DO 
     IF (htab.lookup(tab[i]) = true) THEN 
         count := htab.get(tab[i]);
