@@ -3,23 +3,30 @@ VAR
 SET1 : ARRAY_OF_INTEGER (4);
 SET2 : ARRAY_OF_INTEGER (5);
 sum: integer :=0;
-i,j : integer;
+i,j,count1,count2 : integer :=0;
 BEGIN
 SET1 := {3,1,7,9};
 SET2 := {2,4,1,9,3};
 FOR i FROM 0 TO SET1.length -1 STEP 1 DO
+
     FOR j FROM 0 TO SET2.length -1 STEP 1 DO
     IF (SET1 [i] <> SET2[j]) THEN
-        sum := sum + SET1[i];
+        count1++ ; 
     END_IF
     END_FOR
+    IF (count1 == SET2_length)
+        sum := sum + SET1[i];
+    END_IF
 END_FOR
 FOR i FROM 0 TO SET2.length -1 STEP 1 DO
     FOR j FROM 0 TO STEP1.length -1 STEP 1 DO
     IF (SET2[i] <> SET1[j]) THEN
-        sum := sum + SET2[i];
+        count2++
     END_IF
     END_FOR
+    IF (count2 == SET1.length)
+        sum := sum + SET2[i];
+    END_IF
 END_FOR
 
 Write (" THE SUM OF ALL DISTINCT ELEMENTS IS ", sum);
